@@ -16,18 +16,17 @@ _______________________________________________________
 
 ##Vistas
 
-[main](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main.png)
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main.png)
 
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main_view.png)
 
-[main_list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main_view.png)
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/list.png)
 
-[list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/list.png)
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/add.png)
 
-[add](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/add.png)
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/search.png)
 
-[search](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/search.png)
-
-[about](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/about.png)
+(https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/about.png)
 
 _______________________________________________________
 
