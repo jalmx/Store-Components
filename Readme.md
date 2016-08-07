@@ -16,24 +16,24 @@ _______________________________________________________
 
 ##Vistas
 
-[main](Imags/main.png)
+[main](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main.png)
 
 ###-
-[main_list](Imags/main_list.png)
+[main_list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main_view.png)
 
 ###-
-[list](Imags/list.png)
+[list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/list.png)
 
 ###-
-[add](Imags/add.png)
-
-###-
-
-[search](Imags/search.png)
+[add](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/add.png)
 
 ###-
 
-[about](Imags/about.png)
+[search](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/search.png)
+
+###-
+
+[about](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/about.png)
 
 ###-
 
