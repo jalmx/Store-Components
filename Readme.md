@@ -10,30 +10,34 @@ Opciones para los registros:
 - Sele puede dar una clave al producto
 - Vista rapida a los datos del componente
 - Listado de los componentes y su estatus
+
+
 _______________________________________________________
 
 ##Vistas
 
-[](Imags/main.png)
+[main](Imags/main.png)
 
 ###-
-[](Imags/main_list.png)
+[main_list](Imags/main_list.png)
 
 ###-
-[](Imags/list.png)
+[list](Imags/list.png)
 
 ###-
-[](Imags/add.png)
-
-###-
-
-[](Imags/search.png)
+[add](Imags/add.png)
 
 ###-
 
-[](Imags/about.png)
+[search](Imags/search.png)
+
+###-
+
+[about](Imags/about.png)
 
 ###-
 
 _______________________________________________________
+
+
 Esta muy básico, tiene oportunidad para muchas mejoras
