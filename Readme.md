@@ -18,24 +18,16 @@ _______________________________________________________
 
 [main](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main.png)
 
-###-
+
 [main_list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/main_view.png)
 
-###-
 [list](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/list.png)
 
-###-
 [add](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/add.png)
-
-###-
 
 [search](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/search.png)
 
-###-
-
 [about](https://raw.githubusercontent.com/jalmx89/Store-Components/master/Imags/about.png)
-
-###-
 
 _______________________________________________________
 
