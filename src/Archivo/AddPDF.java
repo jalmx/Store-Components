@@ -202,7 +202,6 @@ public class AddPDF extends javax.swing.JDialog {
         if (v == 0) {
             try {
                 in = new FileInputStream(ventana.getSelectedFile());
-                System.out.println("Ruta en donde se guardara " + save);
                 FileOutputStream out = new FileOutputStream(save);
 
                 byte[] buf = new byte[1024];

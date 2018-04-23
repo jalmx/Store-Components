@@ -1,4 +1,4 @@
-#STORE COMPONET
+# STORE COMPONET
 
 Es un software diseñado para el control de dispositivos electronicos localmente en un base de datos SQLite
 

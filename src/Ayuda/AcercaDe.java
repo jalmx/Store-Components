@@ -49,7 +49,7 @@ public class AcercaDe extends javax.swing.JDialog {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Aplicación desarrollada por:\nJosef Leyva Electronic - \"JLE\"\nDepartamento: YOS\nCoatzacoalcos, Veracruz, Mexico\n2014\njosefleyvaelectronic@gmail.com");
+        jTextArea1.setText("Aplicación desarrollada por:\nCoatzacoalcos, Veracruz, Mexico\n2014 - 2018\ncontacto@alejandro-leyva.com\nalejandro-leyva.com");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -64,9 +64,9 @@ public class AcercaDe extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
