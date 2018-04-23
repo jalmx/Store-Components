@@ -7,6 +7,7 @@ package Archivo;
 
 //import DB.Variables;
 import DB.Variables;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,9 +30,8 @@ public class AddPDF extends javax.swing.JDialog {
     /**
      * Creates new form AddPDF
      */
-   
     private String save;    //path del archivo
-    
+
     public AddPDF(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -41,11 +41,11 @@ public class AddPDF extends javax.swing.JDialog {
         jrbArchivo.setSelected(true);
         jtLink.setEnabled(false);
         jSaveInt.setEnabled(false);
-        
-        save = "Datasheets\\" + Variables.codigo + ".pdf";
+
+        createFolderToSavePDF(Variables.codigo);
     }
 
-     public AddPDF(java.awt.Frame parent, boolean modal,String codigo) {//invoca  por edición
+    public AddPDF(java.awt.Frame parent, boolean modal, String codigo) {//invoca  por edición
         super(parent, modal);
         initComponents();
         ImageIcon imagen = new ImageIcon("Imgs\\TO39.png");
@@ -54,9 +54,19 @@ public class AddPDF extends javax.swing.JDialog {
         jrbArchivo.setSelected(true);
         jtLink.setEnabled(false);
         jSaveInt.setEnabled(false);
-        
-        save = "Datasheets\\" + codigo + ".pdf";
+
+        createFolderToSavePDF(codigo);
     }
+
+    private void createFolderToSavePDF(String codigo) {
+
+        if (!new File("Datasheets").mkdir()) {
+            new File("Datasheets").mkdir();
+        }
+        
+        save = "Datasheets" + File.separatorChar + codigo + ".pdf";
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,6 +202,7 @@ public class AddPDF extends javax.swing.JDialog {
         if (v == 0) {
             try {
                 in = new FileInputStream(ventana.getSelectedFile());
+                System.out.println("Ruta en donde se guardara " + save);
                 FileOutputStream out = new FileOutputStream(save);
 
                 byte[] buf = new byte[1024];
