@@ -1,8 +1,9 @@
-# STORE COMPONET
+# STORE DEVICES
 
-Es un software diseñado para el control de dispositivos electronicos localmente en un base de datos SQLite
+Es un software diseñado para el control de dispositivos electrónicos localmente en un base de datos SQLite
 
 Opciones para los registros:
+
 - Agregar
 - Eliminar
 - Actualizar
@@ -30,5 +31,3 @@ _______________________________________________________
 
 _______________________________________________________
 
-
-Esta muy básico, tiene oportunidad para muchas mejoras

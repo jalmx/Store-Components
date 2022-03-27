@@ -30,7 +30,7 @@ public class AddPDF extends javax.swing.JDialog {
     /**
      * Creates new form AddPDF
      */
-    private String save;    //path del archivo
+    private String save="Sin Archivo";    //path del archivo
     private String pathBase ="";
 
     public AddPDF(java.awt.Frame parent, boolean modal) {
@@ -44,22 +44,20 @@ public class AddPDF extends javax.swing.JDialog {
         jtLink.setEnabled(false);
         jSaveInt.setEnabled(false);
 
-        createFolderToSavePDF(Variables.codigo);
+        createFolderToSavePDF();
+        createNameFile(Variables.codigo);
     }
 
-    public AddPDF(java.awt.Frame parent, boolean modal, String codigo) {//invoca  por edición
-        super(parent, modal);
-        initComponents();
-        ImageIcon imagen = new ImageIcon("Imgs" +File.separator+ "TO39.png");
-        setIconImage(imagen.getImage());
-        setLocationRelativeTo(null);
-        jrbArchivo.setSelected(true);
-        jtLink.setEnabled(false);
-        jSaveInt.setEnabled(false);
-
-        createFolderToSavePDF(codigo);
+    public AddPDF(java.awt.Frame parent, boolean modal, String codigo) {//invoca  por edición        
+        this(parent,modal);
+        createNameFile(codigo);
     }
 
+    private void createNameFile(String name) {
+    	  
+    	save = pathBase + File.separator+ name + ".pdf";
+    	System.out.println("Full path creado" + save);
+    }
     private void genearatePathBase() {
     	String url = this.getClass().getProtectionDomain().getCodeSource().getLocation().toString();
     	url = url.replace("file:","" );
@@ -74,13 +72,13 @@ public class AddPDF extends javax.swing.JDialog {
 		pathBase = fullPath.toString();
 		System.out.println(pathBase);
     }
-    private void createFolderToSavePDF(String codigo) {
-
-        if (!new File(pathBase + "Datasheets").mkdir()) {
-            new File(pathBase + "Datasheets").mkdir();
+    
+    private void createFolderToSavePDF() {
+    	pathBase = pathBase + "Datasheets";
+        if (!new File(pathBase).mkdir()) {
+            new File(pathBase).mkdir();
         }
-        
-        save = "Datasheets" + File.separator + codigo + ".pdf";
+       
     }
 
     /**
@@ -231,6 +229,7 @@ public class AddPDF extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Guardado");
 
                 Variables.archivo = save;//ruta en donde esta guardado el archivo seleccionado
+                System.out.println("Archivo guardado en " + save);
                 this.dispose();
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Archivo no encontrado");
@@ -286,6 +285,7 @@ public class AddPDF extends javax.swing.JDialog {
                             arch.close();
 
                             Variables.archivo = save;
+                            System.out.println("Archivo guardado en " + save);
                             JOptionPane.showMessageDialog(null, "Archivo guardado");
 
                         } catch (MalformedURLException e) {
