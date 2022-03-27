@@ -6,6 +6,7 @@
 package Edicion;
 
 import Archivo.*;
+import DB.BaseDeDatos;
 import DB.Variables;
 import datasheet.Principal;
 import java.util.Vector;
@@ -323,7 +324,7 @@ public class Editar extends javax.swing.JDialog {
 
         if (insertar == true) {
 
-            boolean modificado = Variables.BD.actualizarDatos(registro);
+            boolean modificado =BaseDeDatos.getDB().actualizarDatos(registro);
 
             if (modificado) {
 //                Variables.archivo = "Sin archivo";
@@ -372,7 +373,7 @@ public class Editar extends javax.swing.JDialog {
     }
 
     private int enumeracion() {
-        Vector result = Variables.BD.getDatos();
+        Vector result = BaseDeDatos.getDB().getDatos();
 
         int x = result.size();
         return x + 1;

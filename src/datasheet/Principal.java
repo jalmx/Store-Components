@@ -429,10 +429,8 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Individual", Individual);
-
-        BaseDeDatos db = new BaseDeDatos();
-
-        Vector resultados = Variables.BD.getDatos();
+        
+        Vector resultados = BaseDeDatos.getDB().getDatos();
         Vector columna = new Vector();
 
         columna.add("No");
@@ -761,7 +759,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (opt == 0) {//si eliminar
             int[] i = jTable1.getSelectedRows(); //obtenemos el que seleccionamos
-            Vector result = Variables.BD.getDatos(); //crea el objeto Base de datos
+            Vector result = BaseDeDatos.getDB().getDatos(); //crea el objeto Base de datos
             //se usa el try por que si no se selecciona ningun registro marca una excepcion
             Vector<Integer> ids = new Vector<Integer>(); //Vector de ids para eliminar
             for (int valor : i) { //obtener ids que se van a eliminar
@@ -769,7 +767,7 @@ public class Principal extends javax.swing.JFrame {
                 ids.add((Integer) registro.get(0));
             }//fin del for mejorado
 
-            if (Variables.BD.eliminarDato(ids)) {  //se hace uso del metodo para eliminar los seleccionador
+            if (BaseDeDatos.getDB().eliminarDato(ids)) {  //se hace uso del metodo para eliminar los seleccionador
                 actualizarTabla();
                 JOptionPane.showMessageDialog(null, "Registro(s) eliminado(s).");
             } else {
@@ -783,7 +781,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbDeleteActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        if (Variables.BD.eliminarDatoP(jlID.getText())) {  //se hace uso del metodo para eliminar el seleccionado
+        if (BaseDeDatos.getDB().eliminarDatoP(jlID.getText())) {  //se hace uso del metodo para eliminar el seleccionado
             clear();
             JOptionPane.showMessageDialog(null, "Registro eliminado");
             this.datasheet = "Sin archivo";
@@ -796,7 +794,7 @@ public class Principal extends javax.swing.JFrame {
     private void jbEditTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditTActionPerformed
         try {
             int i = jTable1.getSelectedRow(); //obtenemos el que seleccionamos
-            Vector result = Variables.BD.getDatosT(); //crea el objeto Base de datos
+            Vector result = BaseDeDatos.getDB().getDatosT(); //crea el objeto Base de datos
             //se usa el try por que si no se selecciona ningun registro marca una excepcion
             Vector registro = (Vector) result.get(i); //aqui pondra la posicion del seleccionado en la tabla
             Editar regist = new Editar(this, true, registro);//se hace una modificacion en el contructor de la ventana
@@ -834,7 +832,7 @@ public class Principal extends javax.swing.JFrame {
         String busqueda = jtbuscar.getText();
 
         if (busqueda.compareTo("") != 0) { //si no escribe nada en el cuadro de texto no buscara nada
-            Vector resultados = Variables.BD.buscarDatoT(busqueda);
+            Vector resultados = BaseDeDatos.getDB().buscarDatoT(busqueda);
             Vector columna = new Vector();
             columna.add("ID");
             columna.add("Nombre");
@@ -875,7 +873,7 @@ public class Principal extends javax.swing.JFrame {
         String busqueda = jtNombre.getText();
 
         if (busqueda.compareTo("") != 0) { //si no escribe nada en el cuadro de texto no buscara nada
-            bus = Variables.BD.buscarDatoF(busqueda);
+            bus = BaseDeDatos.getDB().buscarDatoF(busqueda);
 
             try {//el try para cuando esta mal el codigo
                 jlID.setText(bus.get(0).toString());
@@ -937,7 +935,7 @@ public class Principal extends javax.swing.JFrame {
     private void jbDsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDsActionPerformed
         try {
             int i = jTable1.getSelectedRow(); //obtenemos el que seleccionamos
-            Vector result = Variables.BD.getDatosT(); //crea el objeto Base de datos
+            Vector result = BaseDeDatos.getDB().getDatosT(); //crea el objeto Base de datos
             //se usa el try por que si no se selecciona ningun registro marca una excepcion
             Vector registro = (Vector) result.get(i); //aqui pondra la posicion del seleccionado en la tabla
             datasheet = registro.get(6).toString();//le paso el path del pdf
@@ -973,7 +971,7 @@ public class Principal extends javax.swing.JFrame {
     public final void actualizarTabla() {
 
         jTable1 = new javax.swing.JTable();
-        Vector resultados = Variables.BD.getDatos();
+        Vector resultados = BaseDeDatos.getDB().getDatos();
         int w = resultados.size();
 
         Vector columna = new Vector();

@@ -4,6 +4,7 @@
  */
 package DB;//********************************
 
+import java.io.File;
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -16,22 +17,58 @@ public class BaseDeDatos {//constructor*******************************
 
     // Controlador JDBC y Ruta de la Base de Datos
     final String DRIVER = "org.sqlite.JDBC";
-    final String Database = "DB.db";
-    final String DATABASE_URL = "jdbc:sqlite:" + Database;
+    final String nameDB = "DB.db";
+    final String DATABASE_URL = "jdbc:sqlite:";
     Connection connection = null; // manages connection
     Statement statement = null; // query statement
     ResultSet resultSet = null; // manages results
+    String pathBase = ""; // Path donde quedara la db una vez queda instalado
+    String pathDB = "";
+    String fullPathDB = ""; //path completo donde esta la aplicacion para colocar la bdb y hacer la conexion
+    private static BaseDeDatos db= null;
+    
+    public static BaseDeDatos getDB() {
+    	if (db == null) {
+    		db = new BaseDeDatos();
+    	}
+    	return db;
+    }
 
-    public BaseDeDatos() {//constructor
+    
+    private void genearatePathBase() {
+    	String url = this.getClass().getProtectionDomain().getCodeSource().getLocation().toString();
+    	url = url.replace("file:","" );
+		
+		String[] splitPath = url.split(File.separator);
+		
+		StringBuilder fullPath = new StringBuilder();
+		
+		for ( int x =0; x < splitPath.length - 1; x++) {
+			fullPath.append(splitPath[x]+File.separator);
+		}
+		pathBase = fullPath.toString();
+		fullPathDB = DATABASE_URL + pathBase + nameDB;
+		pathDB = pathBase + File.separator + nameDB;
+		
+		//System.out.println(pathBase);
+		//System.out.println(fullPathDB);
+		//System.out.println(pathDB);
+		
+    }
+    
+    private BaseDeDatos() {//constructor
         // Conexión con la Base de Datos "DB.db" y se realiza una Consulta
+    	genearatePathBase();
         try {
             // Se carga la clase del controlador
             Class.forName(DRIVER);
 
-            // Se establece la conexión con la base de datos
-            connection
-                    = DriverManager.getConnection(DATABASE_URL);
-
+            checkExistDB();
+            
+            // Se establece la conexión con la base de datos   
+            
+            connection = DriverManager.getConnection(fullPathDB);
+            
             // Se crea un objeto statement para consultar la base de datos
             statement = connection.createStatement();
         } // end try
@@ -41,8 +78,51 @@ public class BaseDeDatos {//constructor*******************************
         } // end catch           
     }
 
-    public Vector getDatos() {//metodo para utilizar la tabla
+    private void checkExistDB(){
+    	try {
+        	if(! (new File(this.pathDB).exists())) {
+        		createTable();
+        	}	
+    	}catch (Exception e) {
+    		System.out.printf("Fallo algo al crear la DB \n", e.getMessage(), "\n");
+		}
+    	
+    }
 
+    private void createTable() throws Exception {
+    	String nameTable = "DataS";
+    	String columnId = "ID";
+        String columnName = "nombre";
+        String columnType = "tipo";
+        String columnCode = "codigo";
+        String columnDescription = "descripcion";
+        String columnPackage = "encapsulado";
+        String columnPathPDF = "dirPDF";
+        String columnLocation = "ubicacion";
+        String columnState = "estado";
+        String columnCount = "cantidad";
+          
+    	
+        String query= "CREATE TABLE '" + nameTable +"' "
+            + "('" + columnId + "' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+            + " '" + columnName + "' TEXT NOT NULL,"
+            + " '" + columnType + "' TEXT NOT NULL,"
+            + " '" + columnCode + "' TEXT NOT NULL,"
+            + " '" + columnDescription + "' TEXT NOT NULL,"
+            + " '" + columnPackage + "' TEXT NOT NULL,"
+            + " '" + columnPathPDF + "' TEXT NOT NULL,"
+            + " '" + columnLocation + "' TEXT NOT NULL,"
+            + " '" +  columnState+ "' TEXT NOT NULL,"
+            + " '" + columnCount + "' TEXT NOT NULL);";
+        connection = DriverManager.getConnection(fullPathDB);
+        statement = connection.createStatement();
+        statement.executeUpdate(query);
+        statement.close();
+    }
+
+    
+    public Vector getDatos() {//metodo para utilizar la tabla
+    	    	
         Vector resultado = new Vector();//vector es un tipo de arrayList 
 
         try {

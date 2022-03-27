@@ -31,11 +31,13 @@ public class AddPDF extends javax.swing.JDialog {
      * Creates new form AddPDF
      */
     private String save;    //path del archivo
+    private String pathBase ="";
 
     public AddPDF(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.genearatePathBase();
         initComponents();
-        ImageIcon imagen = new ImageIcon("Imgs\\TO39.png");
+        ImageIcon imagen = new ImageIcon("Imgs"+File.separator+"TO39.png");
         setIconImage(imagen.getImage());
         setLocationRelativeTo(null);
         jrbArchivo.setSelected(true);
@@ -48,7 +50,7 @@ public class AddPDF extends javax.swing.JDialog {
     public AddPDF(java.awt.Frame parent, boolean modal, String codigo) {//invoca  por edición
         super(parent, modal);
         initComponents();
-        ImageIcon imagen = new ImageIcon("Imgs\\TO39.png");
+        ImageIcon imagen = new ImageIcon("Imgs" +File.separator+ "TO39.png");
         setIconImage(imagen.getImage());
         setLocationRelativeTo(null);
         jrbArchivo.setSelected(true);
@@ -58,13 +60,27 @@ public class AddPDF extends javax.swing.JDialog {
         createFolderToSavePDF(codigo);
     }
 
+    private void genearatePathBase() {
+    	String url = this.getClass().getProtectionDomain().getCodeSource().getLocation().toString();
+    	url = url.replace("file:","" );
+		
+		String[] splitPath = url.split(File.separator);
+		
+		StringBuilder fullPath = new StringBuilder();
+		
+		for ( int x =0; x < splitPath.length - 1; x++) {
+			fullPath.append(splitPath[x]+File.separator);
+		}
+		pathBase = fullPath.toString();
+		System.out.println(pathBase);
+    }
     private void createFolderToSavePDF(String codigo) {
 
-        if (!new File("Datasheets").mkdir()) {
-            new File("Datasheets").mkdir();
+        if (!new File(pathBase + "Datasheets").mkdir()) {
+            new File(pathBase + "Datasheets").mkdir();
         }
         
-        save = "Datasheets" + File.separatorChar + codigo + ".pdf";
+        save = "Datasheets" + File.separator + codigo + ".pdf";
     }
 
     /**

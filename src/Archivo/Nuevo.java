@@ -5,6 +5,7 @@
  */
 package Archivo;
 
+import DB.BaseDeDatos;
 import DB.Variables;
 import datasheet.Principal;
 import java.util.Vector;
@@ -300,7 +301,7 @@ public class Nuevo extends javax.swing.JDialog {
         try {
             registro.add(Double.parseDouble(jtcantidad.getText()));//cantidad de elementos en bodega
             if (insertar == true) {
-            boolean insertado = Variables.BD.insertarDato(registro); //Retorna valor booleano, true que si fue insertado y falso de lo contrario
+            boolean insertado = BaseDeDatos.getDB().insertarDato(registro); //Retorna valor booleano, true que si fue insertado y falso de lo contrario
 
             if (insertado) {
                 Variables.archivo = "Sin archivo";//esto es para que si agrego otro dispo y no agrego DS no agrege el DS anterior
@@ -387,7 +388,7 @@ public class Nuevo extends javax.swing.JDialog {
     }
 
     private int enumeracion() {
-        Vector result = Variables.BD.getDatos();
+        Vector result = BaseDeDatos.getDB().getDatos();
 
         int x = result.size();
         return x + 1;
